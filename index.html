@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AISHAT DEV – Full-Stack Web Developer</title>
+<meta name="description" content="AISHAT DEV designs and builds fast, conversion-focused websites, web applications and APIs for startups and growing businesses.">
+<link rel="canonical" href="https://YOUR-DOMAIN.com/">
+<meta property="og:title" content="AISHAT DEV – Full-Stack Web Developer">
+<meta property="og:description" content="Websites, web apps and APIs that get found and turn visitors into customers.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og.jpg">
+<meta name="theme-color" content="#080808">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080808;--bg2:#161616;--ink:#F5F5F2;--mute:#9a9a95;--line:#2a2a2a;--lime:#CDFB50;--lav:#C9C2DA;--f:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;--m:ui-monospace,Menlo,Consolas,monospace;--pad:clamp(20px,5vw,72px)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f);overflow-x:hidden}
+a{color:inherit}img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--lime);color:#080808;padding:10px 16px;border-radius:99px;z-index:99}.skip:focus{left:8px}
+.wrap{padding:0 var(--pad);max-width:1500px;margin:auto}
+h1,h2,h3{line-height:1;letter-spacing:-.04em;font-weight:800}
+h1{font-size:clamp(44px,9.5vw,140px)}h2{font-size:clamp(34px,6vw,76px)}h3{font-size:clamp(22px,2.6vw,34px);letter-spacing:-.02em;line-height:1.1}
+.lime{color:var(--lime)}.mute{color:var(--mute)}
+.tag{font:500 12px var(--m);letter-spacing:.12em;text-transform:uppercase;color:var(--lime);display:flex;gap:10px;align-items:center}.tag:before{content:"";width:22px;height:1px;background:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 26px;border-radius:99px;font-weight:700;text-decoration:none;border:1px solid #595958;background:var(--bg2);color:var(--ink);cursor:pointer;font-family:inherit;font-size:15px;transition:transform .25s,box-shadow .25s}
+.btn.p{background:var(--lime);color:#080808;border-color:var(--lime);box-shadow:0 0 22px rgba(205,251,80,.2)}
+.btn:hover{transform:translateY(-2px)}.btn.p:hover{box-shadow:0 0 34px rgba(205,251,80,.4)}.btn i{font-style:normal;transition:transform .25s}.btn:hover i{transform:translateX(4px)}
+header{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0);background:linear-gradient(#080808e6,#08080800)}
+nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.04em;text-decoration:none}.logo b{color:var(--lime)}
+.links{display:flex;gap:6px;align-items:center}.links a.nl{padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:500;color:var(--mute)}
+.links a.nl:hover{color:var(--ink)}.links a.nl[aria-current=page]{color:#080808;background:var(--ink)}
+.burger{display:none;background:var(--bg2);border:1px solid #595958;color:var(--ink);width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:18px}
+@media(max-width:860px){.burger{display:block}.links{position:fixed;inset:0;background:#080808f5;flex-direction:column;justify-content:center;gap:14px;font-size:30px;visibility:hidden;opacity:0;transition:.3s}.links.open{visibility:visible;opacity:1}.links a.nl{font-size:32px;color:var(--ink)}.burger{position:relative;z-index:60}}
+.view{display:none;padding-top:110px;min-height:100vh}.view.on{display:block;animation:in .6s both}
+@keyframes in{from{opacity:0;transform:translateY(18px)}}
+.status{display:inline-flex;gap:8px;align-items:center;font:500 12px var(--m);color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:6px 14px}.status:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}.status.off:before{background:#777;box-shadow:none}
+/* HERO + 3D */
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;align-items:center;min-height:calc(100vh - 110px)}
+.hero h1{margin:22px 0}.hero p.lead{font-size:clamp(17px,1.5vw,21px);color:var(--mute);max-width:520px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.stage{perspective:1100px;height:min(560px,60vh);display:grid;place-items:center;cursor:grab;touch-action:none;position:relative;user-select:none}.stage:active{cursor:grabbing}
+.rig{width:200px;height:200px;position:relative;transform-style:preserve-3d}
+.face{position:absolute;inset:0;border:1.5px solid var(--lime);background:rgba(205,251,80,.05);display:grid;place-items:center;font:700 13px var(--m);color:var(--lime);letter-spacing:.1em;backdrop-filter:blur(2px)}
+.f1{transform:translateZ(100px)}.f2{transform:rotateY(180deg) translateZ(100px)}.f3{transform:rotateY(90deg) translateZ(100px)}.f4{transform:rotateY(-90deg) translateZ(100px)}.f5{transform:rotateX(90deg) translateZ(100px)}.f6{transform:rotateX(-90deg) translateZ(100px)}
+.plate{position:absolute;width:300px;height:190px;left:-50px;top:5px;border:1px solid #595958;background:linear-gradient(145deg,#1d1d1d,#0c0c0c);border-radius:10px;padding:14px;font:11px var(--m);color:var(--mute);box-shadow:0 20px 60px #000}
+.plate i{display:block;height:6px;border-radius:9px;background:#2c2c2c;margin:9px 0}.plate i.l{background:var(--lime);width:40%}.plate b{color:var(--ink)}
+.p1{transform:translateZ(190px) rotateY(0)}.p2{transform:rotateY(120deg) translateZ(230px)}.p3{transform:rotateY(240deg) translateZ(230px)}
+.drag{position:absolute;bottom:0;font:500 12px var(--m);color:var(--mute)}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.stage{height:380px}.rig{transform:scale(.8)}}
+/* sections */
+section.s{padding:clamp(70px,10vw,150px) 0;border-top:1px solid var(--line)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px)}@media(max-width:860px){.split{grid-template-columns:1fr}}
+.path{border:1px solid var(--line);border-radius:6px;padding:clamp(22px,3vw,44px);background:linear-gradient(160deg,#121212,#080808);transform-style:preserve-3d;transition:transform .15s,border-color .3s}.path:hover{border-color:var(--lime)}
+.path ul{list-style:none;padding:0;margin:18px 0}.path li{padding:12px 0;border-top:1px solid var(--line);color:var(--mute)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px;font:500 12px var(--m)}.flow span{border:1px solid var(--line);padding:8px 14px;border-radius:99px}.flow span.h{border-color:var(--lime);color:var(--lime)}
+.list a.row{display:grid;grid-template-columns:60px 1fr auto;gap:20px;align-items:center;padding:28px 0;border-top:1px solid var(--line);text-decoration:none;transition:padding .3s}
+.list a.row:hover{padding-left:16px;color:var(--lime)}.list .n{font:12px var(--m);color:var(--mute)}.list small{display:block;color:var(--mute);font:12px var(--m);margin-top:6px}
+.marq{overflow:hidden;border-block:1px solid var(--line);padding:26px 0;margin-top:30px}.marq div{display:flex;gap:60px;width:max-content;animation:mq 30s linear infinite;font:800 clamp(22px,3vw,40px)/1 var(--f);letter-spacing:-.03em;color:#3a3a3a}@keyframes mq{to{transform:translateX(-50%)}}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0;margin-top:40px}.steps div{border-left:1px solid var(--line);padding:6px 24px 30px}.steps b{font:12px var(--m);color:var(--lime)}.steps h3{margin:12px 0 8px}.steps p{color:var(--mute);font-size:15px}
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-top:36px}.stack h4{font:500 12px var(--m);color:var(--lime);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}.stack span{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:5px 13px;margin:0 6px 8px 0;font-size:14px}
+.closing{text-align:center;padding:clamp(80px,12vw,180px) 0}.closing h2{max-width:900px;margin:20px auto 34px}.closing .cta{justify-content:center}
+/* services */
+.svc{display:grid;grid-template-columns:70px 1.2fr 1.4fr;gap:30px;padding:40px 0;border-top:1px solid var(--line)}
+.svc p{color:var(--mute)}.svc ul{margin:12px 0 18px;padding-left:18px;color:var(--mute)}.svc em{font:normal 12px var(--m);color:var(--lime)}
+@media(max-width:860px){.svc{grid-template-columns:1fr}}
+.faq details{border-top:1px solid var(--line);padding:20px 0}.faq summary{cursor:pointer;font-weight:700;font-size:19px}.faq p{color:var(--mute);margin-top:10px;max-width:700px}
+/* portfolio */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0}.filters button{font:inherit;font-size:14px;padding:10px 18px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;min-height:44px}.filters button[aria-pressed=true]{background:var(--lime);color:#080808;border-color:var(--lime);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.card{grid-column:span 6;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#101010;text-align:left;color:inherit;font:inherit;cursor:pointer;padding:0;transition:transform .2s,border-color .3s;transform-style:preserve-3d}
+.card:nth-child(4n+1){grid-column:span 7}.card:nth-child(4n+2){grid-column:span 5}.card:nth-child(4n+3){grid-column:span 5}.card:nth-child(4n+4){grid-column:span 7}
+.card:hover{border-color:var(--lime)}.card .art{aspect-ratio:16/9;background:#0b0b0b;display:block;width:100%}.card .tx{padding:22px}.card .tx p{color:var(--mute);margin:8px 0 14px;font-size:15px}
+.chips{font:11px var(--m);color:var(--lime)}@media(max-width:860px){.card,.card:nth-child(n){grid-column:1/-1}}
+.demo{font:500 11px var(--m);color:var(--lav);border:1px solid var(--lav);border-radius:99px;padding:2px 10px;margin-left:8px;white-space:nowrap}
+dialog{width:min(920px,94vw);max-height:90vh;border:1px solid var(--line);border-radius:10px;background:#0e0e0e;color:var(--ink);padding:0;margin:auto}dialog::backdrop{background:#000c}
+.dl{padding:clamp(22px,4vw,48px)}.dl h2{font-size:clamp(30px,5vw,56px);margin:12px 0 22px}.dl h4{font:500 12px var(--m);color:var(--lime);text-transform:uppercase;letter-spacing:.1em;margin:24px 0 6px}.dl p{color:#c9c9c4}.x{float:right}
+/* contact */
+.form{display:grid;gap:16px}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:600px){.two{grid-template-columns:1fr}}
+label{font:500 13px var(--m);display:block;margin-bottom:6px;color:var(--mute)}label .r{color:var(--lime)}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid #3a3a3a;border-radius:8px;color:var(--ink);font:inherit;padding:13px 14px;min-height:48px}textarea{min-height:130px;resize:vertical}
+input:user-invalid,select:user-invalid,textarea:user-invalid{border-color:#ff7a7a}.err{color:#ff9a9a;font-size:13px;min-height:0}
+.msg{padding:16px;border-radius:8px;border:1px solid var(--line);margin-top:6px}.msg.ok{border-color:var(--lime)}.msg.bad{border-color:#ff7a7a}
+.cal{border:1px solid var(--line);border-radius:8px;padding:20px;background:#101010}.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-weight:700}
+.ch button{background:var(--bg2);border:1px solid #3a3a3a;color:var(--ink);border-radius:50%;width:44px;height:44px;cursor:pointer}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}.cg span{font:11px var(--m);color:var(--mute);padding:4px}
+.cg button{aspect-ratio:1;border:1px solid transparent;border-radius:8px;background:none;color:var(--ink);cursor:pointer;font:inherit;min-height:40px}.cg button:disabled{color:#444;cursor:not-allowed;text-decoration:line-through}.cg button:not(:disabled):hover{border-color:var(--lime)}.cg button[aria-pressed=true]{background:var(--lime);color:#080808;font-weight:800}
+.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.slots button{border:1px solid #3a3a3a;background:none;color:var(--ink);border-radius:99px;padding:10px 16px;cursor:pointer;font:13px var(--m);min-height:44px}.slots button[aria-pressed=true]{border-color:var(--lime);background:var(--lime);color:#080808}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:60px 0 40px}.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}@media(max-width:860px){.fg{grid-template-columns:1fr 1fr}}footer a{display:block;color:var(--mute);text-decoration:none;padding:4px 0}footer a:hover{color:var(--lime)}footer h4{font:12px var(--m);color:var(--lime);margin-bottom:8px}
+.rv{opacity:0;transform:translateY(26px);transition:.8s cubic-bezier(.2,.7,.2,1)}.rv.v{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}.rv{opacity:1;transform:none}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap"><nav aria-label="Main">
+<a class="logo" href="#/home" aria-label="AISHAT DEV home">AISHAT<b>.</b>DEV</a>
+<div class="links" id="links">
+<a class="nl" href="#/home" data-nav="home">Home</a><a class="nl" href="#/services" data-nav="services">Services</a><a class="nl" href="#/portfolio" data-nav="portfolio">Work</a><a class="nl" href="#/contact" data-nav="contact">Contact</a>
+<a class="btn p" href="#/contact" data-book>Book a Consultation <i>→</i></a></div>
+<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="links">☰</button>
+</nav></div></header>
+
+<main id="main" tabindex="-1">
+<!-- HOME -->
+<div class="view" id="v-home" data-title="AISHAT DEV – Full-Stack Web Developer"><div class="wrap">
+<div class="hero"><div>
+<span class="status" id="status"></span>
+<h1>Software that gets found. <span class="lime">And converts.</span></h1>
+<p class="lead">I’m a full-stack developer building websites, web apps and APIs that turn ambitious ideas into products customers actually use.</p>
+<div class="cta"><a class="btn p" href="#/contact">Start a Project <i>→</i></a><a class="btn" href="#/portfolio">Explore Selected Work</a><a class="btn" href="#/contact" data-book>Book a Consultation</a></div></div>
+<div class="stage" id="stage" role="img" aria-label="Interactive 3D composition of interface plates around a cube. Drag to rotate."><div class="rig" id="rig">
+<div class="face f1">API</div><div class="face f2">UI</div><div class="face f3">DB</div><div class="face f4">AUTH</div><div class="face f5">CI</div><div class="face f6">TEST</div>
+<div class="plate p1"><b>/dashboard</b><i class="l"></i><i></i><i></i></div><div class="plate p2"><b>POST /api/orders</b><i></i><i class="l"></i><i></i></div><div class="plate p3"><b>schema.sql</b><i></i><i></i><i class="l"></i></div>
+</div><span class="drag">Drag to rotate</span></div></div></div>
+
+<section class="s"><div class="wrap"><div class="tag">Two problems. One result.</div><h2 style="margin:18px 0 40px">Where do potential customers get lost?</h2>
+<div class="split">
+<div class="path tilt"><div class="tag">Before the click</div><h3 style="margin-top:14px">Nobody finds you.</h3><ul><li>Fast, crawlable, semantic builds</li><li>Technical SEO &amp; structured data</li><li>Core Web Vitals tuning</li></ul><a class="btn" href="#/services">Improve visibility <i>→</i></a></div>
+<div class="path tilt"><div class="tag">After the click</div><h3 style="margin-top:14px">Visitors arrive. Few convert.</h3><ul><li>Conversion-focused websites</li><li>Online stores &amp; checkout flows</li><li>Web apps that remove friction</li></ul><a class="btn p" href="#/services">Improve conversion <i>→</i></a></div></div>
+<div class="flow" aria-label="Customer journey"><span>Offer</span><span>Search</span><span class="h">Visibility</span><span>Click</span><span class="h">Conversion</span><span>Inquiry / Sale</span><span>Customer</span></div></div></section>
+
+<section class="s"><div class="wrap"><div class="tag">Selected work</div><h2 style="margin:18px 0 20px">Projects.</h2><div class="list" id="homeWork"></div><p style="margin-top:26px"><a class="btn" href="#/portfolio">All projects <i>→</i></a></p></div></section>
+
+<section class="s"><div class="wrap"><div class="tag">How I work</div><h2 style="margin:18px 0">Understand first. Then build.</h2>
+<div class="steps" id="steps"></div></div></section>
+
+<section class="s"><div class="wrap"><div class="tag">Toolbox</div><h2 style="margin:18px 0">Tools I use.</h2><p class="mute">Edit <code>CONFIG.stack</code> to list only technologies you’ve confirmed.</p><div class="stack" id="stack"></div>
+<div class="marq" aria-hidden="true"><div id="marq"></div></div></div></section>
+
+<section class="s closing"><div class="wrap"><div class="tag" style="justify-content:center">First step</div><h2>Let’s build something useful.</h2><div class="cta"><a class="btn p" href="#/contact">Start a Project <i>→</i></a><a class="btn" href="#/contact" data-book>Book a Discovery Call</a></div></div></section>
+</div>
+
+<!-- SERVICES -->
+<div class="view" id="v-services" data-title="Services – AISHAT DEV"><div class="wrap">
+<div class="tag">Services</div><h1 style="font-size:clamp(40px,8vw,112px);margin:20px 0">Outcomes, <span class="lime">not just code.</span></h1>
+<p class="lead mute" style="max-width:620px;font-size:20px">Pick what you need — or tell me the problem and we’ll find the right shape for it.</p>
+<div style="margin-top:50px" id="svcList"></div>
+<section class="s"><div class="tag">Engagement</div><h2 style="margin:18px 0 10px">How we can work together.</h2><div class="steps" id="eng"></div></section>
+<section class="s faq"><div class="tag">FAQ</div><h2 style="margin:18px 0 30px">Good questions.</h2><div id="faq"></div></section>
+<div class="closing"><h2>Not sure what you need?</h2><div class="cta"><a class="btn p" href="#/contact" data-book>Book a Consultation <i>→</i></a></div></div>
+</div></div>
+
+<!-- PORTFOLIO -->
+<div class="view" id="v-portfolio" data-title="Work – AISHAT DEV"><div class="wrap">
+<div class="tag">Case studies</div><h1 style="font-size:clamp(40px,8vw,112px);margin:20px 0">Engineering, <span class="lime">shown.</span></h1>
+<p class="mute" style="max-width:640px">Projects marked “Demo concept” are personal builds, not paid client work, and any results are hypothetical.</p>
+<div class="filters" id="filters" role="group" aria-label="Filter projects"></div><div class="grid" id="grid"></div>
+</div></div>
+
+<!-- CONTACT -->
+<div class="view" id="v-contact" data-title="Contact – AISHAT DEV"><div class="wrap">
+<div class="tag">Contact</div><h1 style="font-size:clamp(40px,8vw,112px);margin:20px 0">Have a project in mind? <span class="lime">Let’s make it real.</span></h1>
+<div class="split" style="margin-top:50px">
+<div><h3 style="margin-bottom:20px">Send a project inquiry</h3>
+<form class="form" id="form" novalidate>
+<div class="two"><div><label for="fn">Full name <span class="r">*</span></label><input id="fn" name="name" required autocomplete="name"><div class="err" data-e="fn"></div></div>
+<div><label for="fe">Email <span class="r">*</span></label><input id="fe" name="email" type="email" required autocomplete="email"><div class="err" data-e="fe"></div></div></div>
+<div class="two"><div><label for="fc">Company</label><input id="fc" name="company" autocomplete="organization"></div>
+<div><label for="ft">Project type <span class="r">*</span></label><select id="ft" name="type" required></select><div class="err" data-e="ft"></div></div></div>
+<div class="two"><div><label for="fb">Budget</label><select id="fb" name="budget"></select></div><div><label for="fl">Timeline</label><input id="fl" name="timeline" placeholder="e.g. launch in Q1"></div></div>
+<div><label for="fd">Project description <span class="r">*</span></label><textarea id="fd" name="message" required minlength="20"></textarea><div class="err" data-e="fd"></div></div>
+<p class="mute" style="font-size:13px">Your details are used only to reply to this inquiry and aren’t stored in your browser.</p>
+<button class="btn p" id="send" type="submit">Send inquiry <i>→</i></button><div id="fmsg" role="status" aria-live="polite"></div></form></div>
+<div><h3 style="margin-bottom:20px" id="book">Let’s talk about your project.</h3>
+<div id="bookBox"></div></div></div></div></div>
+</main>
+
+<footer><div class="wrap"><div class="fg"><div><a class="logo" href="#/home" style="display:inline">AISHAT<b>.</b>DEV</a><p class="mute" style="max-width:320px;margin-top:10px">Full-stack web development for businesses that want to be found and chosen.</p><p style="margin-top:14px"><a class="btn p" href="#/contact">Start a Project <i>→</i></a></p></div>
+<div><h4>Pages</h4><a href="#/home">Home</a><a href="#/services">Services</a><a href="#/portfolio">Work</a><a href="#/contact">Contact</a></div>
+<div><h4>Services</h4><div id="fsvc"></div></div><div><h4>Connect</h4><div id="social"></div></div></div>
+<p class="mute" style="margin-top:40px;font:12px var(--m)">© <span id="yr"></span> AISHAT DEV. All rights reserved.</p></div></footer>
+
+<dialog id="dlg" aria-labelledby="dt"><div class="dl" id="dbody"></div></dialog>
+
+<script>
+/* =====================================================================
+   CONFIG — edit everything here. Empty values hide the related UI.
+   ===================================================================== */
+const CONFIG={
+  name:"[YOUR FULL NAME]", brand:"AISHAT DEV", location:"[YOUR CITY, COUNTRY]",
+  email:"",                       // e.g. "hello@yourdomain.com"
+  phone:"",
+  github:"", linkedin:"", resume:"",
+  available:true, availabilityText:"Available for select web development projects",
+  unavailableText:"Currently booked — join the waitlist",
+  formEndpoint:"",                // e.g. "https://formspree.io/f/xxxxxxx" (REQUIRED for real delivery)
+  bookingUrl:"",                  // e.g. "https://calendly.com/you/30min" or Cal.com link
+  timeZone:"Africa/Lagos", meetingMinutes:30,
+  demoSlots:["10:00","11:30","14:00","16:00"], // used ONLY by the labelled demo calendar
+  stack:{Frontend:["HTML","CSS","JavaScript"],Backend:["Node.js"],Databases:["PostgreSQL"],"APIs & Integrations":["REST"],"Deployment":["Vercel","GitHub"],"Testing & QA":[]}, // replace with confirmed tools
+  budgets:["Not sure yet","Under $2k","$2k – $5k","$5k – $15k","$15k+"],
+  process:[["Discover","Understand goals, users and constraints."],["Plan","Define scope, milestones and architecture."],["Design & Build","Ship working increments you can review."],["Test & Launch","Verify quality, then deploy safely."],["Improve","Measure, fix and iterate after launch."]],
+  engagement:[["Fixed-scope project","A defined deliverable with agreed milestones. [edit]"],["Monthly support","Ongoing fixes and features. [edit]"],["Short-term / hourly","Targeted help on a specific problem. [edit if offered]"]],
+  faq:[["How long does a project take?","It depends on scope. I’ll give a realistic estimate after a discovery conversation."],["How is pricing set?","Request a quote — pricing follows scope, not a fixed menu."],["What about revisions and scope changes?","Milestone reviews keep feedback structured; changes outside scope are estimated before work starts."],["How do we communicate?","Regular updates through your preferred channel, with a shared task list."],["Who handles hosting?","I can deploy to your accounts on modern static or server hosting and hand over documentation."],["Do you offer support after launch?","Yes — see the monthly support option."]],
+  services:[
+   {id:"web",t:"Custom websites that convert",p:"Your site looks fine but visitors don’t become inquiries.",g:["Responsive, accessible build","SEO-ready structure","Analytics-ready"],ex:"Business sites, landing pages"},
+   {id:"app",t:"Full-stack web applications",p:"Spreadsheets and manual steps are slowing the business down.",g:["Dashboards & portals","Auth & roles","Workflow automation"],ex:"Internal tools, SaaS MVPs"},
+   {id:"shop",t:"E-commerce development",p:"Customers browse but abandon at checkout.",g:["Product catalog","Checkout integration","Order management"],ex:"Online stores"},
+   {id:"api",t:"Backend & API development",p:"Systems don’t talk to each other reliably.",g:["Database design","REST APIs","Third-party integrations"],ex:"APIs, payments, webhooks"},
+   {id:"redo",t:"Redesign & performance",p:"The site is slow, dated or hard to use on phones.",g:["Core Web Vitals fixes","Accessibility audit","Responsive redesign"],ex:"Audits, rebuilds"},
+   {id:"care",t:"Maintenance & ongoing development",p:"Launch is just the start.",g:["Bug fixes","Security updates","New features"],ex:"Monthly retainers"}],
+  projects:[
+   {id:"saas",t:"Pulse — SaaS analytics dashboard",c:"Web Applications",demo:true,o:"A multi-tenant analytics dashboard concept.",prob:"Teams juggle scattered metrics with no single view.",role:"Everything: UI, API, data model. [edit]",tech:["JavaScript","Node.js","PostgreSQL"],arch:"SPA front end → REST API → PostgreSQL with row-level tenant isolation.",dec:"Server-side aggregation keeps the client light.",hard:"Slow aggregate queries → indexes and cached rollups.",qual:"Keyboard-accessible charts; parameterized queries.",res:"Hypothetical concept — no production metrics.",live:"",src:""},
+   {id:"site",t:"Northwind — service business website",c:"Websites",demo:true,o:"A conversion-focused site for a fictional local service.",prob:"Visitors couldn’t tell what to do next.",role:"Design, build, SEO structure. [edit]",tech:["HTML","CSS","JavaScript"],arch:"Static pages, semantic markup, structured data, form service.",dec:"One clear CTA per screen.",hard:"Image weight → responsive formats and lazy loading.",qual:"WCAG-minded contrast, fast LCP target.",res:"Hypothetical concept.",live:"",src:""},
+   {id:"shop",t:"Kiln & Co — e-commerce store",c:"E-commerce",demo:true,o:"A storefront concept with cart and checkout flow.",prob:"Checkout friction causes abandonment.",role:"Front end, cart logic, payment integration design. [edit]",tech:["JavaScript","Node.js","REST"],arch:"Catalog API, cart state, hosted payment provider (no card data touches the app).",dec:"Hosted checkout to reduce security scope.",hard:"Stock consistency → transactional order creation.",qual:"Server-side validation; no secrets in the browser.",res:"Hypothetical concept.",live:"",src:""},
+   {id:"book",t:"Slotly — booking & workflow API",c:"Backend and APIs",demo:true,o:"A scheduling backend with auth and webhooks.",prob:"Double-bookings and manual reminders.",role:"API design, database, auth. [edit]",tech:["Node.js","PostgreSQL","REST"],arch:"REST API, unique-slot constraints, webhook notifier.",dec:"DB-level constraints prevent double booking.",hard:"Time zones → store UTC, render locally.",qual:"Rate limiting; input validation.",res:"Hypothetical concept.",live:"",src:""}]
+};
+
+/* ---------- helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* ---------- navigation (hash router) ---------- */
+const VIEWS=["home","services","portfolio","contact"];
+function route(){
+  const h=location.hash.replace(/^#\/?/,"")||"home",[v,arg]=h.split("/");
+  const view=VIEWS.includes(v)?v:(v==="work"?"portfolio":"home");
+  $$(".view").forEach(e=>e.classList.toggle("on",e.id==="v-"+view));
+  $$("[data-nav]").forEach(a=>a.dataset.nav===view?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  document.title=$("#v-"+view).dataset.title;scrollTo(0,0);closeMenu();reveal();
+  if(v==="work"&&arg)openCase(arg,true);else if($("#dlg").open)$("#dlg").close();
+  if(view==="contact"&&location.hash.includes("book"))$("#book").scrollIntoView();
+}
+addEventListener("hashchange",route);
+function closeMenu(){$("#links").classList.remove("open");$("#burger").setAttribute("aria-expanded","false");$("#burger").textContent="☰"}
+$("#burger").onclick=()=>{const o=$("#links").classList.toggle("open");$("#burger").setAttribute("aria-expanded",o);$("#burger").textContent=o?"✕":"☰"};
+addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+$$("[data-book]").forEach(a=>a.addEventListener("click",()=>setTimeout(()=>$("#book").scrollIntoView({behavior:RM?"auto":"smooth"}),60)));
+
+/* ---------- render ---------- */
+function renderStatic(){
+  const s=$("#status");s.textContent=CONFIG.available?CONFIG.availabilityText:CONFIG.unavailableText;s.classList.toggle("off",!CONFIG.available);
+  $("#yr").textContent=new Date().getFullYear();
+  $("#steps").innerHTML=CONFIG.process.map((p,i)=>`<div class="rv"><b>0${i+1}</b><h3>${esc(p[0])}</h3><p>${esc(p[1])}</p></div>`).join("");
+  $("#eng").innerHTML=CONFIG.engagement.map((p,i)=>`<div class="rv"><b>0${i+1}</b><h3>${esc(p[0])}</h3><p>${esc(p[1])}</p></div>`).join("");
+  $("#stack").innerHTML=Object.entries(CONFIG.stack).filter(([,v])=>v.length).map(([k,v])=>`<div><h4>${esc(k)}</h4>${v.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`).join("");
+  const all=Object.values(CONFIG.stack).flat();$("#marq").innerHTML=[...all,...all,...all,...all].map(x=>`<span>${esc(x)}</span>`).join("");
+  $("#faq").innerHTML=CONFIG.faq.map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join("");
+  $("#homeWork").innerHTML=CONFIG.projects.map((p,i)=>`<a class="row rv" href="#/work/${p.id}"><span class="n">0${i+1}</span><span><h3>${esc(p.t)}</h3><small>${esc(p.c)}${p.demo?" · Demo concept":""}</small></span><span class="btn">Case <i>→</i></span></a>`).join("");
+  $("#svcList").innerHTML=CONFIG.services.map((s,i)=>`<article class="svc rv"><span class="lime" style="font:13px var(--m)">0${i+1}</span><div><h3>${esc(s.t)}</h3><p style="margin-top:12px"><em>PROBLEM</em><br>${esc(s.p)}</p></div><div><em>YOU RECEIVE</em><ul>${s.g.map(g=>`<li>${esc(g)}</li>`).join("")}</ul><p style="font-size:14px">Examples: ${esc(s.ex)} · Pricing: request a quote</p><p style="margin-top:16px"><a class="btn" href="#/contact" data-svc="${esc(s.id)}">Discuss This Service <i>→</i></a></p></div></article>`).join("");
+  $("#fsvc").innerHTML=CONFIG.services.slice(0,4).map(s=>`<a href="#/services">${esc(s.t.split(" ").slice(0,3).join(" "))}</a>`).join("");
+  const soc=[["Email",CONFIG.email&&"mailto:"+CONFIG.email],["GitHub",CONFIG.github],["LinkedIn",CONFIG.linkedin],["Resume",CONFIG.resume]].filter(x=>x[1]);
+  $("#social").innerHTML=soc.map(x=>`<a href="${esc(x[1])}" ${x[0]!=="Email"?'target="_blank" rel="noopener"':""}>${x[0]}</a>`).join("")||'<span class="mute" style="font-size:14px">Add links in CONFIG</span>';
+  $("#ft").innerHTML='<option value="">Select…</option>'+CONFIG.services.map(s=>`<option value="${esc(s.id)}">${esc(s.t)}</option>`).join("")+'<option value="other">Something else</option>';
+  $("#fb").innerHTML=CONFIG.budgets.map(b=>`<option>${esc(b)}</option>`).join("");
+  $$("[data-svc]").forEach(a=>a.addEventListener("click",()=>{$("#ft").value=a.dataset.svc}));
+}
+/* original SVG art for project cards */
+function art(i){const c=["#CDFB50","#C9C2DA"][i%2];return `<svg class="art" viewBox="0 0 320 180" role="img" aria-label="Abstract interface illustration" style="background:#0b0b0b"><g fill="none" stroke="${c}" stroke-width="1.5"><rect x="${40+i*8}" y="30" width="170" height="110" rx="6"/><rect x="${90-i*6}" y="55" width="190" height="95" rx="6" opacity=".5"/><path d="M60 120l30-30 25 18 40-45 35 25"/></g><circle cx="${230-i*10}" cy="50" r="6" fill="${c}"/></svg>`}
+function renderWork(f="All"){
+  const cats=["All",...new Set(CONFIG.projects.map(p=>p.c))];
+  $("#filters").innerHTML=cats.map(c=>`<button aria-pressed="${c===f}" data-f="${esc(c)}">${esc(c)}</button>`).join("");
+  $("#grid").innerHTML=CONFIG.projects.filter(p=>f==="All"||p.c===f).map((p,i)=>`<button class="card tilt" data-id="${p.id}">${art(i)}<span class="tx" style="display:block"><span class="chips">${esc(p.c)}${p.demo?'<span class="demo">Demo concept</span>':""}</span><h3 style="margin-top:8px">${esc(p.t)}</h3><p>${esc(p.o)}</p><span class="chips">${p.tech.map(esc).join(" · ")}</span><br><span class="lime" style="font-weight:700">View Case Study →</span></span></button>`).join("");
+  $$("#filters button").forEach(b=>b.onclick=()=>renderWork(b.dataset.f));
+  $$(".card").forEach(c=>c.onclick=()=>{location.hash="#/work/"+c.dataset.id});
+  tilt();
+}
+function openCase(id,fromHash){
+  const p=CONFIG.projects.find(x=>x.id===id);if(!p)return;
+  const sec=(h,t)=>t?`<h4>${h}</h4><p>${esc(t)}</p>`:"";
+  $("#dbody").innerHTML=`<button class="btn x" id="dc" aria-label="Close case study">✕ Close</button><div class="chips tag">${esc(p.c)}${p.demo?'<span class="demo">Demo concept — not client work</span>':""}</div><h2 id="dt">${esc(p.t)}</h2>`+sec("Overview",p.o)+sec("Problem & context",p.prob)+sec("My role",p.role)+sec("Technical architecture",p.arch)+sec("Key decisions",p.dec)+sec("Difficulties & solutions",p.hard)+sec("Accessibility, security & performance",p.qual)+sec("Results & lessons",p.res)+`<h4>Stack</h4><p>${p.tech.map(esc).join(" · ")}</p><p style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap">${p.live?`<a class="btn" target="_blank" rel="noopener" href="${esc(p.live)}">Live demo</a>`:""}${p.src?`<a class="btn" target="_blank" rel="noopener" href="${esc(p.src)}">Source</a>`:""}<a class="btn p" href="#/contact" id="dd">Discuss a similar project →</a></p>`;
+  const d=$("#dlg");if(!d.open)d.showModal();$("#dc").onclick=()=>d.close();$("#dd").onclick=()=>d.close();
+}
+$("#dlg").addEventListener("close",()=>{if(location.hash.startsWith("#/work/"))history.replaceState(null,"","#/portfolio")});
+$("#dlg").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
+
+/* ---------- 3D hero: drag to rotate ---------- */
+function hero3d(){
+  const st=$("#stage"),rig=$("#rig");let rx=-18,ry=30,vx=0,vy=RM?0:.25,drag=false,lx,ly;
+  st.addEventListener("pointerdown",e=>{drag=true;lx=e.clientX;ly=e.clientY;st.setPointerCapture(e.pointerId)});
+  st.addEventListener("pointermove",e=>{if(!drag)return;vy=(e.clientX-lx)*.4;vx=-(e.clientY-ly)*.3;ry+=vy;rx+=vx;lx=e.clientX;ly=e.clientY});
+  st.addEventListener("pointerup",()=>{drag=false;vy=Math.max(-3,Math.min(3,vy))});
+  (function loop(){if(!drag){ry+=vy;vy+=((RM?0:.25)-vy)*.02}rx=Math.max(-70,Math.min(70,rx));
+    if($("#v-home").classList.contains("on"))rig.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg)`;requestAnimationFrame(loop)})();
+}
+function tilt(){if(RM)return;$$(".tilt").forEach(el=>{if(el._t)return;el._t=1;el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateY(${x*6}deg) rotateX(${-y*6}deg)`});el.addEventListener("pointerleave",()=>el.style.transform="")})}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("v");io.unobserve(e.target)}}),{threshold:.1});
+function reveal(){$$(".rv:not(.v)").forEach(e=>io.observe(e))}
+
+/* ---------- contact form ---------- */
+const MSGS={fn:"Please enter your name.",fe:"Please enter a valid email address.",ft:"Please choose a project type.",fd:"Please describe your project (at least 20 characters)."};
+let sending=false;
+function validate(){let ok=true,first;["fn","fe","ft","fd"].forEach(id=>{const el=$("#"+id),bad=!el.checkValidity();$(`[data-e=${id}]`).textContent=bad?MSGS[id]:"";el.setAttribute("aria-invalid",bad);if(bad){ok=false;first=first||el}});first&&first.focus();return ok}
+function mailto(d){return `mailto:${CONFIG.email}?subject=${encodeURIComponent("Project inquiry from "+d.name)}&body=${encodeURIComponent(`${d.message}\n\nType: ${d.type}\nBudget: ${d.budget}\nTimeline: ${d.timeline}\nCompany: ${d.company}\nReply to: ${d.email}`)}`}
+$("#form").addEventListener("submit",async e=>{
+  e.preventDefault();if(sending||!validate())return;
+  const d=Object.fromEntries(new FormData(e.target)),box=$("#fmsg"),btn=$("#send");
+  if(!CONFIG.formEndpoint){box.className="msg bad";box.innerHTML="Message <b>not sent</b> — the contact form isn’t connected yet (owner: set <code>CONFIG.formEndpoint</code>). "+(CONFIG.email?`<a class="lime" href="${esc(mailto(d))}">Send by email instead →</a>`:"Please add an email in CONFIG as a fallback.");return}
+  sending=true;btn.disabled=true;btn.textContent="Sending…";box.className="";box.textContent="";
+  try{const r=await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});
+    if(!r.ok)throw new Error(r.status);box.className="msg ok";box.textContent="Thank you — your inquiry was delivered. I’ll reply by email.";e.target.reset();btn.textContent="Sent ✓"}
+  catch(err){box.className="msg bad";box.innerHTML="Delivery failed — nothing was sent."+(CONFIG.email?` <a class="lime" href="${esc(mailto(d))}">Email me instead →</a>`:"");btn.disabled=false;btn.textContent="Try again";sending=false}
+});
+
+/* ---------- booking ---------- */
+let cm=new Date(),sel=null,slot=null;cm.setDate(1);
+function renderBooking(){
+  const b=$("#bookBox");
+  if(CONFIG.bookingUrl){b.innerHTML=`<p class="mute" style="margin-bottom:16px">${CONFIG.meetingMinutes}-minute discovery call. Pick a time in the live scheduler; confirmation and reschedule links come from the booking provider.</p><a class="btn p" target="_blank" rel="noopener" href="${esc(CONFIG.bookingUrl)}">Open live scheduler <i>→</i></a>`;return}
+  b.innerHTML=`<p class="mute" style="margin-bottom:14px">${CONFIG.meetingMinutes}-minute discovery call · times shown in ${esc(CONFIG.timeZone)}.</p><div class="msg" style="margin-bottom:14px;font-size:14px"><b>Demo calendar.</b> Availability below is illustrative and nothing is booked here. Set <code>CONFIG.bookingUrl</code> to go live.</div><div class="cal"><div class="ch"><button id="pm" aria-label="Previous month">‹</button><span id="ml" aria-live="polite"></span><button id="nm" aria-label="Next month">›</button></div><div class="cg" id="cg"></div><div class="slots" id="sl" role="group" aria-label="Times"></div><p style="margin-top:16px"><button class="btn p" id="rq" disabled>Request this time via the form →</button></p></div>`;
+  $("#pm").onclick=()=>{cm.setMonth(cm.getMonth()-1);drawCal()};$("#nm").onclick=()=>{cm.setMonth(cm.getMonth()+1);drawCal()};
+  $("#rq").onclick=()=>{$("#fd").value=`Consultation request: ${sel.toDateString()} at ${slot} (${CONFIG.timeZone}).\n`;$("#fn").focus()};
+  drawCal();
+}
+function drawCal(){
+  const y=cm.getFullYear(),m=cm.getMonth(),today=new Date();today.setHours(0,0,0,0);
+  $("#ml").textContent=cm.toLocaleDateString("en-US",{month:"long",year:"numeric"});
+  let h=["S","M","T","W","T","F","S"].map(d=>`<span aria-hidden="true">${d}</span>`).join("");
+  for(let i=0;i<new Date(y,m,1).getDay();i++)h+="<span></span>";
+  for(let d=1;d<=new Date(y,m+1,0).getDate();d++){const dt=new Date(y,m,d),off=dt<today||[0,6].includes(dt.getDay()),on=sel&&+sel===+dt;
+    h+=`<button ${off?"disabled":""} aria-pressed="${!!on}" aria-label="${dt.toDateString()}${off?", unavailable":""}" data-d="${d}">${d}</button>`}
+  $("#cg").innerHTML=h;
+  $$("#cg button").forEach(b=>b.onclick=()=>{sel=new Date(y,m,+b.dataset.d);slot=null;$("#rq").disabled=true;drawCal()});
+  $("#sl").innerHTML=sel&&sel.getMonth()===m?CONFIG.demoSlots.map(t=>`<button aria-pressed="${slot===t}" data-t="${t}">${t}</button>`).join(""):"";
+  $$("#sl button").forEach(b=>b.onclick=()=>{slot=b.dataset.t;$("#rq").disabled=false;drawCal()});
+}
+
+/* ---------- init ---------- */
+renderStatic();renderWork();renderBooking();hero3d();tilt();route();
+</script>
+</body>
+</html>
