@@ -182,12 +182,12 @@ footer{border-top:1px solid var(--line);margin-top:60px;padding:60px 0 40px}.fg{
    ===================================================================== */
 const CONFIG={
   name:"[YOUR FULL NAME]", brand:"AISHAT DEV", location:"[YOUR CITY, COUNTRY]",
-  email:"",                       // e.g. "hello@yourdomain.com"
+  email:"fasasiaishat35@gmail.com",
   phone:"",
   github:"", linkedin:"", resume:"",
   available:true, availabilityText:"Available for select web development projects",
   unavailableText:"Currently booked — join the waitlist",
-  formEndpoint:"",                // e.g. "https://formspree.io/f/xxxxxxx" (REQUIRED for real delivery)
+  formEndpoint:"https://formsubmit.co/ajax/fasasiaishat35@gmail.com", // delivers to your inbox; first submission needs a one-time activation click
   bookingUrl:"",                  // e.g. "https://calendly.com/you/30min" or Cal.com link
   timeZone:"Africa/Lagos", meetingMinutes:30,
   demoSlots:["10:00","11:30","14:00","16:00"], // used ONLY by the labelled demo calendar
@@ -292,8 +292,9 @@ $("#form").addEventListener("submit",async e=>{
   const d=Object.fromEntries(new FormData(e.target)),box=$("#fmsg"),btn=$("#send");
   if(!CONFIG.formEndpoint){box.className="msg bad";box.innerHTML="Message <b>not sent</b> — the contact form isn’t connected yet (owner: set <code>CONFIG.formEndpoint</code>). "+(CONFIG.email?`<a class="lime" href="${esc(mailto(d))}">Send by email instead →</a>`:"Please add an email in CONFIG as a fallback.");return}
   sending=true;btn.disabled=true;btn.textContent="Sending…";box.className="";box.textContent="";
-  try{const r=await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});
-    if(!r.ok)throw new Error(r.status);box.className="msg ok";box.textContent="Thank you — your inquiry was delivered. I’ll reply by email.";e.target.reset();btn.textContent="Sent ✓"}
+  try{const r=await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({...d,_subject:"New inquiry from AISHAT DEV site",_replyto:d.email})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||j.success===false||j.success==="false")throw new Error(j.message||r.status);box.className="msg ok";box.textContent="Thank you — your inquiry was delivered. I’ll reply by email.";e.target.reset();btn.textContent="Sent ✓"}
   catch(err){box.className="msg bad";box.innerHTML="Delivery failed — nothing was sent."+(CONFIG.email?` <a class="lime" href="${esc(mailto(d))}">Email me instead →</a>`:"");btn.disabled=false;btn.textContent="Try again";sending=false}
 });
 
@@ -302,9 +303,9 @@ let cm=new Date(),sel=null,slot=null;cm.setDate(1);
 function renderBooking(){
   const b=$("#bookBox");
   if(CONFIG.bookingUrl){b.innerHTML=`<p class="mute" style="margin-bottom:16px">${CONFIG.meetingMinutes}-minute discovery call. Pick a time in the live scheduler; confirmation and reschedule links come from the booking provider.</p><a class="btn p" target="_blank" rel="noopener" href="${esc(CONFIG.bookingUrl)}">Open live scheduler <i>→</i></a>`;return}
-  b.innerHTML=`<p class="mute" style="margin-bottom:14px">${CONFIG.meetingMinutes}-minute discovery call · times shown in ${esc(CONFIG.timeZone)}.</p><div class="msg" style="margin-bottom:14px;font-size:14px"><b>Demo calendar.</b> Availability below is illustrative and nothing is booked here. Set <code>CONFIG.bookingUrl</code> to go live.</div><div class="cal"><div class="ch"><button id="pm" aria-label="Previous month">‹</button><span id="ml" aria-live="polite"></span><button id="nm" aria-label="Next month">›</button></div><div class="cg" id="cg"></div><div class="slots" id="sl" role="group" aria-label="Times"></div><p style="margin-top:16px"><button class="btn p" id="rq" disabled>Request this time via the form →</button></p></div>`;
+  b.innerHTML=`<p class="mute" style="margin-bottom:14px">${CONFIG.meetingMinutes}-minute discovery call · times shown in ${esc(CONFIG.timeZone)}.</p><div class="msg" style="margin-bottom:14px;font-size:14px"><b>Request a time.</b> Pick a preferred date and time, then send it with the inquiry form. It goes to my inbox and the call is <b>confirmed only after I reply</b>. Slots are suggestions, not live availability.</div><div class="cal"><div class="ch"><button id="pm" aria-label="Previous month">‹</button><span id="ml" aria-live="polite"></span><button id="nm" aria-label="Next month">›</button></div><div class="cg" id="cg"></div><div class="slots" id="sl" role="group" aria-label="Times"></div><p style="margin-top:16px"><button class="btn p" id="rq" disabled>Request this time via the form →</button></p></div>`;
   $("#pm").onclick=()=>{cm.setMonth(cm.getMonth()-1);drawCal()};$("#nm").onclick=()=>{cm.setMonth(cm.getMonth()+1);drawCal()};
-  $("#rq").onclick=()=>{$("#fd").value=`Consultation request: ${sel.toDateString()} at ${slot} (${CONFIG.timeZone}).\n`;$("#fn").focus()};
+  $("#rq").onclick=()=>{$("#fd").value=`Consultation request: ${sel.toDateString()} at ${slot} (${CONFIG.timeZone}).\n`;$("#ft").value=$("#ft").value||"other";$("#form").scrollIntoView({behavior:RM?"auto":"smooth"});$("#fn").focus()};
   drawCal();
 }
 function drawCal(){
